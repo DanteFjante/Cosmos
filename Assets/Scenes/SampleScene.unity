@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 9748239}
   - component: {fileID: 9748238}
   - component: {fileID: 9748237}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804411f9f1b881b44a8569992e1dcefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletOffset: {x: 0, y: 4.11}
+  projectile: {fileID: 2080097082434384521, guid: 993ffc86b36151143a43928973ecac4f, type: 3}
 --- !u!50 &9748239
 Rigidbody2D:
   serializedVersion: 4
@@ -243,6 +245,7 @@ MonoBehaviour:
   Acceleration: 113
   MoveThreshold: 0.442
   TurnSpeed: 858
+  MaxSpeed: 237
 --- !u!4 &9748241
 Transform:
   m_ObjectHideFlags: 0
@@ -303,6 +306,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Shoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9748238}
+        m_TargetAssemblyTypeName: ShipController, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   camera: {fileID: 519420031}
 --- !u!4 &256993615
 Transform:
@@ -329,6 +347,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -344,6 +363,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166a1779003842838ab37bdb67b7a14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToFollow: {fileID: 9748236}
+  offset: {x: 0, y: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -371,7 +404,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 32
+  orthographic size: 15.89
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -411,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1885059464}
   - component: {fileID: 1885059465}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983466766}
   - component: {fileID: 1983466767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

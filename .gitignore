@@ -1,0 +1,14 @@
+
+.idea/
+
+Library/
+
+obj/
+
+Packages/
+
+Temp/
+
+UserSettings/
+
+*.meta

@@ -1,7 +1,8 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Utils
+public static class Utils
 {
 
 
@@ -31,7 +32,6 @@ public class Utils
     public static float GetPartialAngle(float rotationSpeed, float currentRotation, Vector2 desiredPosition)
     {
         float deltaAngle = (GetAngleD(desiredPosition) - currentRotation + 720) % 360 ;
-        Debug.Log("Delta: " + (currentRotation - math.min(deltaAngle - 180,rotationSpeed)));
         
         if (deltaAngle > 180)  
             return currentRotation - math.min(deltaAngle - 180,rotationSpeed);
@@ -40,9 +40,9 @@ public class Utils
 
     }
     
-    public static Vector2 GetPartialVector()
+    public static bool HasComponent(this GameObject go, Type type)
     {
-        return Vector2.zero;
+        return go.GetComponent(type) != null;
     }
 
 }

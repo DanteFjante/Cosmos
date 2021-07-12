@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Ship : MonoBehaviour
@@ -13,9 +10,17 @@ public class Ship : MonoBehaviour
     public float MoveThreshold;
 
     [SerializeField, Range(0, 1080f)]
-    public float TurnSpeed;
+    private float TurnSpeed;
+
+    [SerializeField, Range(0, 1000f)] 
+    private float MaxSpeed;
+
     
-    
+    public float GetMaxSpeed()
+    {
+        return MaxSpeed;
+    }
+
     public float GetAcceleration()
     {
         return Acceleration * Time.deltaTime;
@@ -30,6 +35,8 @@ public class Ship : MonoBehaviour
     {
         return TurnSpeed * Time.deltaTime;
     }
+    
+    
         
     // Start is called before the first frame update
     void Start()
