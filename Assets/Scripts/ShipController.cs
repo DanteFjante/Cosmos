@@ -32,7 +32,9 @@ public class ShipController : MonoBehaviour
     {
         var pos = transform.position;
         Vector2 deltapos = position - new Vector2(pos.x, pos.y);
-        _body.velocity = math.min(_body.velocity + deltapos * _ship.GetAcceleration(), deltapos * _ship.GetMaxSpeed());
+
+        if (math.abs((_body.velocity + deltapos * _ship.GetAcceleration()).magnitude) < math.abs((_ship.GetMaxSpeed() * deltapos).magnitude))
+            _body.velocity = _body.velocity + deltapos * _ship.GetAcceleration();
 
         var r = _ship.transform.rotation;
         Vector2 move = Utils.GetVectorFromAngleD(r.eulerAngles.z) * _ship.GetAcceleration();
@@ -45,8 +47,6 @@ public class ShipController : MonoBehaviour
         if (dist < _ship.GetAcceleration())
             move *= _ship.GetMoveThreshold();
         
-        if(dist > 2f * _ship.GetMoveThreshold() * _ship.GetAcceleration())
-            _body.MovePosition((Vector2)(transform.position) + move);
         _ship.transform.rotation = rot;
     }
     

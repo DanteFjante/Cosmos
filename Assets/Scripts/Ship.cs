@@ -3,7 +3,7 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
 
-    [SerializeField, Range(0, 400f)]
+    [SerializeField, Range(0, 40f)]
     private float Acceleration;
 
     [SerializeField, Range(0f, 1f)] 
@@ -12,13 +12,13 @@ public class Ship : MonoBehaviour
     [SerializeField, Range(0, 1080f)]
     private float TurnSpeed;
 
-    [SerializeField, Range(0, 1000f)] 
+    [SerializeField, Range(0, 100f)] 
     private float MaxSpeed;
 
     
     public float GetMaxSpeed()
     {
-        return MaxSpeed;
+        return MaxSpeed * Time.deltaTime;
     }
 
     public float GetAcceleration()
